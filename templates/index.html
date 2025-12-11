@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess Game with Coach</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="board-container">
+            <div class="board-labels-top">
+                <span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span>
+            </div>
+            <div class="board-row">
+                <div class="board-labels-side">
+                    <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+                </div>
+                <div id="chessboard" class="chessboard"></div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="mode-select">
+                <label for="mode-select">Mode:</label>
+                <select id="mode-select">
+                    <option value="ai">Play vs AI</option>
+                    <option value="human">Play vs Human</option>
+                </select>
+            </div>
+            <div class="coach-toggle">
+                <label>
+                    <input type="checkbox" id="coach-toggle" checked>
+                    Show Coach Hints
+                </label>
+            </div>
+            <div class="coach-area">
+                <div class="thought-bubbles" id="thought-bubbles"></div>
+                <img src="/static/coach.png" alt="Coach" class="coach-img" id="coach">
+            </div>
+            <div class="move-history">
+                <h3>Move History</h3>
+                <ol id="move-list"></ol>
+            </div>
+            <div class="controls">
+                <button id="undo-btn">Undo</button>
+                <button id="save-btn">Save</button>
+                <button id="load-btn">Load</button>
+                <button id="reset-btn">Reset</button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

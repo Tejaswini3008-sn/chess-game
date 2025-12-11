@@ -1,0 +1,281 @@
+/* Chess Game UI Styles */
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 32px 0;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 32px;
+}
+
+.board-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.board-labels-top {
+    display: grid;
+    grid-template-columns: repeat(8, 48px);
+    margin-left: 32px;
+    margin-bottom: 2px;
+    font-size: 1rem;
+    color: #444;
+    width: 384px;
+    text-align: center;
+    user-select: none;
+}
+
+.board-labels-top span {
+    display: block;
+    width: 48px;
+    text-align: center;
+}
+
+.board-labels-side {
+    display: grid;
+    grid-template-rows: repeat(8, 48px);
+    margin-right: 2px;
+    font-size: 1rem;
+    color: #444;
+    height: 384px;
+    user-select: none;
+}
+
+.board-labels-side span {
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    text-align: right;
+    padding-right: 6px;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 48px);
+    grid-template-rows: repeat(8, 48px);
+    border: 4px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    background: #333;
+    position: relative;
+}
+
+.square {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.square.light {
+    background: #eeeed2;
+}
+
+.square.dark {
+    background: #769656;
+}
+
+.square.selected {
+    outline: 3px solid #f7c873;
+    z-index: 2;
+}
+
+.square.move-target {
+    background: #baca44;
+}
+
+.square.last-move {
+    background: #f7c873;
+}
+
+.piece {
+    transition: transform 0.18s cubic-bezier(.4,2,.6,1), color 0.1s;
+    will-change: transform;
+}
+
+.sidebar {
+    flex: 0 0 260px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    padding: 24px 18px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 500px;
+    position: relative;
+}
+
+.mode-select, .coach-toggle {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+}
+
+.mode-select label, .coach-toggle label {
+    margin-right: 8px;
+    color: #3a3a6a;
+    font-weight: 700;
+}
+
+.coach-area {
+    width: 100%;
+    min-height: 160px;
+    position: relative;
+    margin-bottom: 18px;
+}
+
+
+
+/* Thought Bubbles */
+.thought-bubbles {
+    position: absolute;
+    left: 50%;
+    bottom: 120px;
+    transform: translateX(-50%);
+    width: 200px;
+    pointer-events: none;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thought-bubble {
+    position: relative;
+    min-width: 90px;
+    max-width: 170px;
+    margin-bottom: 10px;
+    padding: 10px 18px;
+    background: #f0f0f0;
+    border-radius: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    color: #333;
+    font-size: 1rem;
+    opacity: 0;
+    transform: scale(0) translateY(0);
+    animation: bubble-appear 5s cubic-bezier(.4,2,.6,1) forwards;
+    border: 2px solid #e0e0e0;
+    text-align: center;
+    z-index: 10;
+}
+
+@keyframes bubble-appear {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(0);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-10px);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1) translateY(-20px);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1) translateY(-40px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.95) translateY(-50px);
+    }
+}
+
+.move-history {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 18px;
+}
+
+.move-history h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: #3a3a6a;
+    font-weight: 700;
+}
+
+#move-list {
+    font-size: 1rem;
+    padding-left: 18px;
+    max-height: 140px;
+    overflow-y: auto;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.controls button {
+    background: #769656;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 1rem;
+    font-family: 'Roboto', Arial, sans-serif;
+    cursor: pointer;
+    margin: 0 2px;
+    transition: background 0.18s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.controls button:hover {
+    background: #63804b;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .board-container {
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+    .sidebar {
+        width: 90vw;
+        min-width: 0;
+    }
+}
+.coach-img {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 150px;
+    z-index: 1;
+    object-fit: contain;
+    pointer-events: none;
+}
